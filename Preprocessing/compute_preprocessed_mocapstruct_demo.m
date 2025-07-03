@@ -94,7 +94,6 @@ if numel(fieldnames(markers))>3
     fprintf('Old frames moving %f frames resting %f \n',numel(frames_move_old),numel(frames_rest_old));
     fprintf('NEW Frames moving %f frames resting %f frames move fast \n',numel(frames_move),numel(frames_rest),numel(frames_move_fast));
     
-    
     %             move_frames = zeros(1,numel(veltrace));
     %             move_frames(veltrace>vel_thresh) = 1;
     %             move_frames = conv(move_frames,ones(1,300)./300,'same');

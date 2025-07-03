@@ -4,9 +4,6 @@ function [hierarchystruct]= find_sequences_states_demo(analysisstruct,annotation
 % (C) Jesse D Marshall 2020
 %     Harvard University 
 
-
-
-
 %% load default parameters
 if nargin<3
     params.do_show_pdistmatrix =0;

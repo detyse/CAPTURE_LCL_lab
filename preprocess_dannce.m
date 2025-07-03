@@ -21,23 +21,24 @@ function ratception_struct = preprocess_dannce(filein,fileoutput,animalname,inpu
 %                       conversion factor (to scale the outputs)
 
 
-
 %% check the input -- no input means run with defaults
 if isempty(filein)
-datahere = load('C:\Users\Jesse Marshall\Documents\GitHub\Movement_analysis\Cortex_analysis\DemoRepo\Data\predictions.mat');
+datahere = load('D:\YL_Wang\CAPTURE_LCL_lab\_demo_data\predictions.mat');
 else
     datahere = load(filein);
 end
 
 if isempty(fileoutput)
-    fileoutput = 'test_ratceptionstruct.mat';
+    fileoutput = '_demo_data\test_mouse_ceptionstruct.mat';
 end
 
 if isempty(animalname)
-animalname = 'rats';
+animalname = 'kylemouse';
 end
 
-if ~isempty(input_params)
+% rename the SpineF_marker -> SpineF
+% 没用
+if ~isempty(input_params)   
 if isfield(input_params,'SpineF_marker')   
        f = fieldnames(datahere.predictions);
     v = struct2cell(datahere.predictions);
@@ -51,6 +52,7 @@ end
 
 
 %do some surgery on names -- important for 
+% will not have these
 if isfield(datahere.predictions,'sampleID')
     datahere.sampleID = datahere.predictions.sampleID;
     datahere.predictions =rmfield(datahere.predictions,'sampleID');
@@ -76,6 +78,7 @@ end
     
     
 % file specific changes in names
+% not for us
 if isfield(datahere.predictions,'HeadBR')
     f = fieldnames(datahere.predictions);
     v = struct2cell(datahere.predictions);
