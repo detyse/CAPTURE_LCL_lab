@@ -8,7 +8,7 @@ function ratception_struct = preprocess_dannce(filein,fileoutput,animalname,inpu
 %
 %         fileoutput: a .mat file 
 %
-%         animalname: the name of the animal (default - "rats") that
+%         animalname: the name of the animal (default - "kylemouse") that
 %             defines the number of links and markers to use for a given
 %             dataset in load_link_files.m. Other pre-defined options
 %             include: 'mouse' (14 marker) kyle_mouse (20 marker)
@@ -34,7 +34,7 @@ if isempty(fileoutput)
 end
 
 if isempty(animalname)
-animalname = 'rats';
+animalname = 'kylemouse';
 end
 
 if ~isempty(input_params)

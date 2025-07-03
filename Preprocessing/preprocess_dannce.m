@@ -45,7 +45,7 @@ params.repfactor =10;
 ratception_struct = preprocess_ratception_struct_demo(datahere,preprocessing_parameters,params);
 
 %% load
-[links,colors] = load_link_files('rats');
+[links,colors] = load_link_files('kylemouse');
 ratception_struct.links = links;
 ratception_struct.markercolor = colors;
 ratception_struct.markercolor = colors;
