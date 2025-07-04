@@ -1,5 +1,7 @@
 function anglestruct = load_mouse_kyle_anglestruct()
 
+%% 为什么要用 index, 又不给 skeleton 文件
+
 %% these are the XYZ reference frame angles -- unfortunately you can't use them for appendages, as their orientation will change
 anglestruct.saggital_names = {'head_sagg','neck_sagg','spine_sagg'};
 anglestruct.saggital_pairs =  {[2,3],[3,4],[4,5]}; %head, neck, spine angles , look in the z-y plane

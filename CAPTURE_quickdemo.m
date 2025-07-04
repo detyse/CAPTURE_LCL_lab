@@ -76,7 +76,7 @@ mocapstruct.modular_cluster_properties.clipped_index{8} = 1:size(mocapstruct.ali
 % to control the wavelet parameters, you can change the properties in the
 % compute_wl_transform_features file
 if ~exist(MLmatobjfile,'file') || overwrite_MLmatobjfile
-MLmatobj = create_behavioral_features(mocapstruct,coefficient_file,overwrite_coefficient,linkname);
+MLmatobj = create_behavioral_features(mocapstruct,coefficient_file,overwrite_coefficient, linkname);  % ,linkname
 else
     MLmatobj = load(MLmatobjfile);
 end

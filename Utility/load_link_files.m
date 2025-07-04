@@ -8,7 +8,6 @@ function [links,colors] = load_link_files(linkname)
 switch linkname
     
     case 'rats'
-        
         colors = {'b','b','b',...
             'r','r','r',...
             'm','m',...
@@ -35,7 +34,7 @@ switch linkname
         links{22} = [];
         
     case 'mouse'
-        links =  {[1 2],[2 3],[1 3],[2 4],[4 5],[5 6],[7 8],[ 8 4],[9 10],[ 10 4],[11 12],[12 6],[13 14],[14 6]};
+        links =  {[1 2],[2 3],[1 3],[2 4],[4 5],[5 6],[7 8],[8 4],[9 10],[10 4],[11 12],[12 6],[13 14],[14 6]};
         
         colors  = {'b','b','b',...
             'r','r','r',...
@@ -60,7 +59,6 @@ switch linkname
     case 'marmoset'
         links =  {[1 2],[2 3],[1 3],[2 4],[4 5],[5 6],[7 8],[4 8],[9 10],[4 10],[11 12],[12 6],[13 14],[14 6],[6 15],[15 16]};
         
-        
         colors  = {'b','b','b',...
             'r','r','r',...
             'y','y',... %hips
@@ -84,6 +82,7 @@ switch linkname
             [171 142 73]./255,[171 142 73]./255,... % R arm
             'g','c',...
             'm','m','k'};
+
     case 'bird'
         birdlinks = load('X:\Jesse\MotionAnalysisCaptures\DANNCE_animals\manuscript_formattedData\bird\bird18.mat');
          links =birdlinks.joints_idx;
