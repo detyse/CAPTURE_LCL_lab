@@ -12,7 +12,7 @@ basedirectory = 'mydirectory';
 %input predictions in DANNCE format
 birdfilename = strcat(basedirectory,filesep,'predictions_new.mat');
 %outputfile
-birdfilename_out = strcat(basedirectory,filesep,'ratception_struct.mat');
+birdfilename_out = strcat(basedirectory,filesep,'mouseception_struct.mat');
 
 input_params.SpineM_marker = 'centerBack';
 input_params.SpineF_marker = 'backHead';
@@ -104,8 +104,6 @@ seq_frames_full(frames_to_fill) = repelem(hierarchystruct.clustered_behavior{1},
 state_frames_full(frames_to_fill) = repelem(hierarchystruct.clustered_behavior{2},analysisstruct.tsnegranularity,1);
 
 
-
-
 %% plot some sequences and states
 animate_markers_aligned_fullmovie_demo(analysisstruct.mocapstruct_reduced_agg{1},...
     find(hierarchystruct.clustered_behavior{1}==4));
@@ -141,11 +139,6 @@ for nn=1:2
         close(vwrite)
     end
 end
-
-
-
-
-
 
 %% make individual videos per cluster
 basefolder = 'X:\Jesse\MotionAnalysisCaptures\DANNCE_animals\manuscript_formattedData\bird\';

@@ -8,7 +8,7 @@ anglestruct.saggital_pairs =  {[2,3],[3,4],[4,5]}; %head, neck, spine angles , l
 %transverse/overhead
 anglestruct.transverse_names = {'head_trans','neck_trans','spine_trans','HindlimbL_trans','HindlimbR_trans',...
     'shouldl_trans','shouldr_trans','offset1_trans','offset2_trans'};
-anglestruct.transverse_pairs =  {[2,3],[3,4],[4,5],[5,6],[5,7],[4 8 ], [4 9 ]}; %head, neck, spine angles , look in the z-y plane
+anglestruct.transverse_pairs =  {[2,3],[3,4],[4,5],[5,6],[5,7],[4 8 ], [4 9]}; %head, neck, spine angles , look in the z-y plane
 %transverse_include = [1 1 1 1 1 0 0 1 1];
 
 %coronal/along spine (front view)

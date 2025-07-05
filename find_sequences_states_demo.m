@@ -8,7 +8,7 @@ function [hierarchystruct]= find_sequences_states_demo(analysisstruct,annotation
 if nargin<3
     params.do_show_pdistmatrix =0;
     params.cases ='real';
-    params.decimation_factor = 10;
+    params.decimation_factor = 5;
 end
 
 if ~isfield(analysisstruct,'plotdirectory')
@@ -21,12 +21,11 @@ else
     timescales = params.timescales;
 end
 
-
 if isfield(params,'corr_threshold')
     corr_threshold = params.corr_threshold;
     clustercutoff = params.clustercutoff;
 else
-    corr_threshold = 0.3;
+    corr_threshold = 0.2;
     clustercutoff = 0.65;
 end
 chopsize = 20000;
@@ -70,7 +69,6 @@ sequences_inds = cell(1,numel(timescales));
 hierarchystruct = struct();
 hierarchystruct.annotation_categories = annotation_categories;
 
-
 for ll = 1:numel(timescales)
     circshiftval = round((300./(analysisstruct.tsnegranularity))*60*timescales(ll));
     annotation_use = base_annotation;
@@ -85,7 +83,6 @@ for ll = 1:numel(timescales)
     annotation_matrix_shifted_conv = conv2(annotation_matrix_shifted,ones(1,circshiftval),'same');
     annotation_matrix_shifted_conv_agg = bsxfun(@rdivide,annotation_matrix_shifted_conv,nansum(annotation_matrix_shifted_conv,1));
     annotation_matrix_shifted_conv_agg(isnan(annotation_matrix_shifted_conv_agg)) = 0;
-    
     
     do_show_pdistmatrix =  params.do_show_pdistmatrix ;
     if do_show_pdistmatrix
@@ -106,7 +103,7 @@ for ll = 1:numel(timescales)
     pixelnums = round(2*(circshiftval./decimation_factor));
     size_threshold = pixelnums;
     annotation_matrix_shifted_conv_agg = annotation_matrix_shifted_conv_agg(:,1:decimation_factor:end);
-   
+    
     %% break up watershed into blocks to get over memory complexity issue
     numchops = ceil(size( annotation_matrix_shifted_conv_agg,2)./chopsize);
     density_cc = struct('NumObjects',[0],'PixelIdxList',{cell(0,0)});
@@ -152,8 +149,6 @@ for ll = 1:numel(timescales)
                 pdistmatrixhere(pdistmatrixhere<corr_threshold(ll)) = 0;
             end
             pdistmatrixhere(isnan(pdistmatrixhere)) = 0;
-            
-            
             
             L = watershed(pdistmatrixhere);%valplot_nonbiased(vals_1,vals_2));
             density_cc_temp = bwconncomp(L);

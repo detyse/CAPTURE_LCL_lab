@@ -144,12 +144,13 @@ analysisstruct.zValues_extra = zvals;
 end
 
 %% run sequence and state analysis
-params.do_show_pdistmatrix =1;
-params.decimation_factor = 5; %downsample if needed to save on memory
+params.do_show_pdistmatrix = 1;
+params.decimation_factor = 1; %downsample if needed to save on memory
+% do not do downsample to keep the data.
 params.doclustering = 1;
 
 %clustering parameters
-params.corr_threshold = 0.2;
+params.corr_threshold = 0.15;
 params.clustercutoff = 0.65;
 analysisstruct.plotdirectory = '';
 %timescale to use, in seconds
@@ -158,7 +159,9 @@ params.timescales = [1./4 2];
 analysisstruct.conditionnames = {'test'};
 analysisstruct.ratname = {ratname};
 
-hierarchystruct=   find_sequences_states_demo(analysisstruct,1,params);
+% params for the function: find_sequences_states_demo(analysisstruct,annotation_choose,params)
+% 增大 annotation_choose 
+% hierarchystruct = find_sequences_states_demo(analysisstruct,1,params);
 
 %animate_markers_nonaligned_fullmovie_demo(analysisstruct.mocapstruct_reduced_agg{1},...
 %    find(hierarchystruct.clustered_behavior{1}==2));
