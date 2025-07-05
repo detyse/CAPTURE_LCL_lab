@@ -32,8 +32,6 @@ imagesc(flipud(density_jt))
 density_maps{num_conditions_true+1} = density_jt;
 analysisstruct_out.density_maps  = density_maps;
 
-
-
 %% Get connected components and watershed
 density_watersheds = cell(1,num_conditions);
 density_cc = cell(1,num_conditions);

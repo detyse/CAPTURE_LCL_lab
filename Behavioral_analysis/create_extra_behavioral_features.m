@@ -63,7 +63,7 @@ dyn_coeff_file_markers = strcat(eigenposture_save_folder,filesep,'dynamics_coeff
         % if doesnt exist compute eigenposture feature coefficients and dynamics
         % coefficients
         if (~exist(pose_coeff_file,'file') || overwrite_coeff)
-            [COEFF, SCORE, LATENT, TSQUARED,EXPLAINED] = pca(agg_pose_features');
+            [COEFF, SCORE, LATENT, TSQUARED, EXPLAINED] = pca(agg_pose_features');
             save(pose_coeff_file,'COEFF','EXPLAINED');
         else
             load(pose_coeff_file);
@@ -155,17 +155,18 @@ dyn_coeff_file_markers = strcat(eigenposture_save_folder,filesep,'dynamics_coeff
         
         
         %% hand designed pose features
-        %high rear
-        ML_features.high_rear = mocapstruct.markers_aligned_preproc.SpineF(framelist_true,3)-mocapstruct.markers_aligned_preproc.SpineL(framelist_true,3);
-        ML_features.very_high_rear = mocapstruct.markers_aligned_preproc.SpineF(framelist_true,3)-mocapstruct.markers_aligned_preproc.SpineL(framelist_true,3);
-        
-        %low rear -- shortens stance more and more
-        ML_features.low_rear = mocapstruct.markers_aligned_preproc.HeadB(framelist_true,3)-mocapstruct.markers_aligned_preproc.SpineF(framelist_true,3);
-        
-        %l/r groom
-        ML_features.RGroom = mocapstruct.markers_aligned_preproc.SpineF(framelist_true,1)-mocapstruct.markers_aligned_preproc.SpineL(framelist_true,1);
-        ML_features.LGroom =mocapstruct.markers_aligned_preproc.SpineL(framelist_true,1)-mocapstruct.markers_aligned_preproc.SpineF(framelist_true,1);
-        
+        % %% what is the hand designed??
+        % %high rear
+        % ML_features.high_rear = mocapstruct.markers_aligned_preproc.SpineF(framelist_true,3)-mocapstruct.markers_aligned_preproc.SpineL(framelist_true,3);
+        % ML_features.very_high_rear = mocapstruct.markers_aligned_preproc.SpineF(framelist_true,3)-mocapstruct.markers_aligned_preproc.SpineL(framelist_true,3);
+        % 
+        % %low rear -- shortens stance more and more
+        % ML_features.low_rear = mocapstruct.markers_aligned_preproc.HeadB(framelist_true,3)-mocapstruct.markers_aligned_preproc.SpineF(framelist_true,3);
+        % 
+        % %l/r groom
+        % ML_features.RGroom = mocapstruct.markers_aligned_preproc.SpineF(framelist_true,1)-mocapstruct.markers_aligned_preproc.SpineL(framelist_true,1);
+        % ML_features.LGroom =mocapstruct.markers_aligned_preproc.SpineL(framelist_true,1)-mocapstruct.markers_aligned_preproc.SpineF(framelist_true,1);
+        % 
         
 
         %% morphology features -- inter marker distances

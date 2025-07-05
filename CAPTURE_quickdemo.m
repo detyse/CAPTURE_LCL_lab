@@ -44,17 +44,11 @@ else
 end
 
 if isempty(ratnames)
-    ratname = 'myrat';
+    ratname = 'YW_M3';
 else
     ratname = ratnames;
 end
 
-
-if isempty(ratnames)
-    ratname = 'myrat';
-else
-    ratname = ratnames;
-end
 
 % could change
 savefilename ='myextratsnefeature';
