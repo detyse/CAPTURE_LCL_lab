@@ -176,11 +176,3 @@ for chere =1%clustuse'
     save_mosaicclusters_reproject_bird_demo(analysisstruct,chere,mosaicfolder,...
         1,[],ratception_struct)
 end
-
-
-
-
-
-
-
-
