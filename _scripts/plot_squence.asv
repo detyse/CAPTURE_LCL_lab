@@ -1,0 +1,20 @@
+function plot_squence(data_cluster, target_length)
+    % filter data not long enough
+    using_seq = [];
+    for i = 1:length(data_cluster)
+        if length(data_cluster(i)) == target_length
+            using_seq.append(data_cluster(i))
+        end 
+    end 
+
+    % plot the data
+    N = length(using_seq);
+    T = target_length;
+    half_length = round(target_length);
+    t = (-half_length:half_length);     % should be OK here
+
+    figure; hold on; box off; set(gcf, 'color', 'w');
+
+    plot(t, data,)
+end
+

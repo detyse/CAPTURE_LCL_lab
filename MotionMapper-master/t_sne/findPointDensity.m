@@ -20,8 +20,6 @@ function [xx,yy,density] = findPointDensity(points,sigma,numPoints,rangeVals)
 % (C) Gordon J. Berman, 2014
 %     Princeton University
 
-
-
     if nargin < 3 || isempty(numPoints)
         numPoints = 1001;
     else

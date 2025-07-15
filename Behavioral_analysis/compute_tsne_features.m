@@ -132,7 +132,6 @@ agg_feat = [];
         mocapstruct_reduced_agg.('mocapfiletimes') = [];
     end
     
-    
     for rr = 1:numel(markernames)
         mocapstruct_reduced_agg.markers_preproc.(markernames{rr}) = ...
             preproc_markers_temp.(markernames{rr})(frames_with_good_tracking_sub ,:);

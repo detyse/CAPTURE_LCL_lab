@@ -1,5 +1,5 @@
 
-function [analysisstruct,hierarchystruct] =  CAPTURE_quickdemo(inputfile,ratnames,coefficientfilename,linkname)
+function [analysisstruct] = Copy_of_CAPTURE_quickdemo(inputfile,ratnames,coefficientfilename,linkname)
 % File to generate tsne features and run reembedding on a mouse
 %      inputfile: a .mat file that contains a preprocessed dannce struct
 %                 (see preprocess_dannce)
@@ -20,8 +20,6 @@ function [analysisstruct,hierarchystruct] =  CAPTURE_quickdemo(inputfile,ratname
 % ---------------------------
 % (C) Jesse D Marshall 2020
 %     Harvard University 
-
-
 
 %load mocap file
 if isempty(inputfile)
@@ -82,7 +80,7 @@ analysisparams.tsnegranularity = 50;
 analysisstruct = compute_tsne_features(MLmatobj,mocapstruct,analysisparams);
 
 %run tsne
-zvals = tsne(analysisstruct.jt_features);
+zvals = tsne(analysisstruct.jt_features, 'Perplexity', 50);
 figure(1)
 plot(zvals(:,1),zvals(:,2),'ob','MarkerFaceColor','b')
 analysisstruct.zValues = zvals;
@@ -168,7 +166,6 @@ analysisstruct.ratname = {ratname};
 
 end
 %visualize
-
 
 %internal: check dependencies
 %[fList,pList] = matlab.codetools.requiredFilesAndProducts('CAPTURE_quickdemo.m');

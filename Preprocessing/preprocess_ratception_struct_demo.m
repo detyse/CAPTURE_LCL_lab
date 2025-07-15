@@ -7,17 +7,17 @@ function [ratception_struct,analysisstruct_app] = preprocess_ratception_struct_d
 %mattag = 'JDM37_dannce';
 
 
-repfactor = params.repfactor ;
+repfactor = params.repfactor;
 %loading
-
 
 %% preprocess and generate a mocapstruct
 ratception_struct = [];
 
- markernames = fieldnames(aa.predictions);
+markernames = fieldnames(aa.predictions);
 
-%% replicate
-ratception_struct.fps = 300;
+%% replicate 
+% why do replication? 
+ratception_struct.fps = 60;
 
 %% don't have rest
 ratception_struct.markers_preproc = aa.predictions;
@@ -27,7 +27,7 @@ ratception_struct.markernames = markernames;
 
 ratception_struct.markers = ratception_struct.markers_preproc;
 ratception_structtemp = ratception_struct;
-chunksize = 10^5;
+chunksize = 10^5;       % 100,000
 totalsize = size(ratception_struct.markers_preproc.SpineF,1);
 ratception_struct_full =[];
 filelength=0;
@@ -49,7 +49,7 @@ if (rk==1)
 
 else
    for ll = 1:numel(markernames)
-ratception_struct_full.markers_preproc.(markernames{ll}) = cat(1,ratception_struct_full.markers_preproc.(markernames{ll}),...
+ ratception_struct_full.markers_preproc.(markernames{ll}) = cat(1,ratception_struct_full.markers_preproc.(markernames{ll}),...
      repelem(ratception_struct_temppreproc.markers_preproc.(markernames{ll}),1,1));
  ratception_struct_full.markers_aligned_preproc.(markernames{ll}) = cat(1,ratception_struct_full.markers_aligned_preproc.(markernames{ll}),...
      repelem(ratception_struct_temppreproc.markers_aligned_preproc.(markernames{ll}),1,1));

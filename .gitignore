@@ -20,6 +20,9 @@ $RECYCLE.BIN/
 
 _demo_data
 
+# all generated temp data files
+*.mat
+
 # =========================
 # Operating System Files
 # =========================

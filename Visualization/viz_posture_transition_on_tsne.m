@@ -6,8 +6,10 @@ function viz_posture_transition_on_tsne(analysisstruct, cmapname, params)
 if nargin < 2 || isempty(cmapname), cmapname = 'parula'; end
 if nargin < 3, params = struct;                      end
 if ~isfield(params,'clusterboundary'), params.clusterboundary = true; end
+if ~isfield(params,'watershedboundary'), params.watershedboundary = true; end   % 叠加分水岭边界
 if ~isfield(params,'alpha'),           params.alpha = 0.03;           end  % 0.01-0.05
 if ~isfield(params,'boundarywidth'),   params.boundarywidth = 1.8;    end  % 线宽
+if ~isfield(params,'watershedwidth'),   params.watershedwidth = 1.8;    end  % 线宽
 
 %% 1 — 取播放帧序列
 if isfield(analysisstruct,'frames_with_good_tracking') && ...
@@ -45,6 +47,27 @@ xlim(ax,[min(Y(:,1)) max(Y(:,1))]);
 ylim(ax,[min(Y(:,2)) max(Y(:,2))]);
 title(ax,'t-SNE posture transition');
 colormap(ax,cmap); colorbar(ax,'southoutside');
+
+%% 6 — 选画 watershed 边界（Figure 609 的做法）
+if params.watershedboundary
+    needed = {'sorted_watershed','xx','yy'};
+    assert(all(isfield(analysisstruct,needed)), ...
+        'analysisstruct 缺少 sorted_watershed / xx / yy 字段');
+
+    mask = analysisstruct.sorted_watershed;
+    mask(mask>0) = 1;                           % 二值化
+    B = bwboundaries(flipud(mask));             % y 轴已在 tsne 空间翻转过
+
+    hold(ax,'on')
+    for kk = 1:numel(B)
+        % 将像素坐标映射回 t-SNE 坐标：
+        xpts = analysisstruct.xx(B{kk}(:,2));   % 列 → x
+        ypts = analysisstruct.yy(B{kk}(:,1));   % 行 → y
+        plot(ax,xpts,ypts,'Color',[0 0 0], ...
+             'LineWidth',params.watershedwidth);
+    end
+    hold(ax,'off')
+end
 
 %% 4 — 先播放动画（避免盖住轮廓）
 curr = scatter(ax,Y(1,1),Y(1,2),60,'filled', ...

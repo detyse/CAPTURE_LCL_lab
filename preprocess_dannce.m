@@ -71,7 +71,7 @@ end
 end
 
 if isempty(input_params) || ~isfield(input_params,'repfactor') 
-params.repfactor =10;
+params.repfactor=2;
 else
    params.repfactor = input_params.repfactor;
 end
