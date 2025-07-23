@@ -1,0 +1,33 @@
+%% set env and parameters
+basedirectory = 'mydirectory';     % where store 
+
+filename = "";
+file_path = fullfile(basedirectory, filename);
+
+% params for preprocess
+input_params.
+
+%% format the DANNCE data 
+format_out = fullfile(basedirectory, "predictions.mat");
+
+pred = load(data_path).pred;
+predictions = format_data(data);
+
+%% preprocess data
+preprocess_out = fullfile(basedirectory, "mouseception_struct.mat");
+
+
+
+
+%% do CAPTURE analysis
+
+
+
+%% clustering the points
+
+
+
+%% save data
+
+
+
