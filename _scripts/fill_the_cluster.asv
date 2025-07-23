@@ -1,5 +1,0 @@
-function fill_the_cluster(clusters, scores, varargin)
-    p = inputParser;
-    addParameter(p, 'Boundary', 'boundary');
-    addParameter(p, 'Alg')
-end 

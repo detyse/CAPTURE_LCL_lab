@@ -10,8 +10,8 @@ density_maps = cell(1,numel(analysisstruct.conditions_to_run)+1);
 density_max = params.expansion_factor*max(tsnehere(:));
 density_res = params.density_res ;
 density_width = params.density_width;
-num_conditions_true = numel(unique(analysisstruct.condition_inds));
-num_conditions = num_conditions_true+1;
+num_conditions_true = numel(unique(analysisstruct.condition_inds));     % 都是 1
+num_conditions = num_conditions_true+1;                                 % 2
 
         fprintf('plotting density maps \n');
 if ~isfield(params,'reembed') || params.reembed == 0

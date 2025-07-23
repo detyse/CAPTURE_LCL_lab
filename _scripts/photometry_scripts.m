@@ -1,4 +1,6 @@
-load("_test_folder\34A_D1_G8m_permutated.mat");
+% run this script before plots
+
+load("_test_folder\34A_zscored.mat");
 load("_test_folder\analysisstruct_34A.mat");
 
 signal = data.channel_470;
@@ -37,15 +39,18 @@ for k = 1:numel(clusterIDs)
 end
 
 %% get data and make plots
-data_length = 100;
-clustered_data = cell(1, numel(clusterIDs));
+% data_length = 100;
+% clustered_data = cell(1, numel(clusterIDs));
+% 
+% for k = 1:numel(clusterIDs)
+%     idx_list = clustered{k};
+%     data_in_cluster = cell(1, numel(idx_list));
+%     for idx = 1:numel(idx_list)
+%         data_in_cluster{idx} = get_signal_segment(signal, idx_list(idx), 30);
+%     end 
+%     clustered_data{k} = data_in_cluster;
+% end
 
-for k = 1:numel(clusterIDs)
-    idx_list = clustered{k};
-    data_in_cluster = cell(1, numel(idx_list));
-    for idx = 1:numel(idx_list)
-        data_in_cluster{idx} = get_signal_segment(signal, idx_list(idx), 30);
-    end 
-    clustered_data{k} = data_in_cluster;
-end
 
+%% get the single value vec
+value_vec = signal(ceil(frameIdx/10), :);

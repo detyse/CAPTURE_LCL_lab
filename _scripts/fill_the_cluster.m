@@ -60,12 +60,12 @@ for k = 1:numel(clusters)
     %     scatter(x,y,15,'k','filled','MarkerFaceAlpha',.6);
     % end
     
-    if opt.ShowText
-        cx = mean(x); cy = mean(y);
-        text(cx,cy, sprintf('%.2f', scores(k)), ...
-             'HorizontalAlignment','center', ...
-             'FontWeight','bold', 'Color','k');
-    end
+    % if opt.ShowText
+    %     cx = mean(x); cy = mean(y);
+    %     text(cx,cy, sprintf('%.2f', scores(k)), ...
+    %          'HorizontalAlignment','center', ...
+    %          'FontWeight','bold', 'Color','k');
+    % end
 end
 
 % ---------- 3. 颜色条 ----------

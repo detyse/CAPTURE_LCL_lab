@@ -1,4 +1,3 @@
-
 function [analysisstruct,hierarchystruct] =  CAPTURE_quickdemo(inputfile,ratnames,coefficientfilename,linkname)
 % File to generate tsne features and run reembedding on a mouse
 %      inputfile: a .mat file that contains a preprocessed dannce struct
@@ -20,8 +19,6 @@ function [analysisstruct,hierarchystruct] =  CAPTURE_quickdemo(inputfile,ratname
 % ---------------------------
 % (C) Jesse D Marshall 2020
 %     Harvard University 
-
-
 
 %load mocap file
 if isempty(inputfile)
